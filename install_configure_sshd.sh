@@ -8,7 +8,7 @@ else
   fi
 fi
 
-if grep -aq 'AuthorizedKeysCommandUser' "$SSHD_CONFIG_FILE"; then
+if grep -aq 'AuthorizedKeysCommandUser' "$(which sshd)"; then
   if grep -q '#AuthorizedKeysCommandUser nobody' "$SSHD_CONFIG_FILE"; then
     sed -i "s:#AuthorizedKeysCommandUser nobody:AuthorizedKeysCommandUser nobody:g" "$SSHD_CONFIG_FILE"
   else
